@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube Video Looper</title>
+</head>
+<body>
+    <input id="id" placeholder="Youtube Video URL">
+    <button onclick="start()">Loop Video</button>
+    <p>When video appears click on it and do whatever you want, if the video says not avaliable watch on youtube it doesn't work here</p>
+    <br><br>
+    <iframe frameborder="0" id="vid" width="1000px" height="600px" title="Youtube Video"></iframe>
+    <script>
+        const inp = document.getElementById('id')
+        const ifr = document.getElementById('vid')
+        function start(){
+            const url = inp.value
+            const qS = new URL(url)
+
+            const y = new URLSearchParams(qS.search)
+
+            const id = y.get('v')
+            const vid = `https://www.youtube-nocookie.com/embed/${id}?playlist=${id}&autoplay=1&loop=1`
+            ifr.src = vid
+
+        }
+    </script>
+</body>
+</html>
