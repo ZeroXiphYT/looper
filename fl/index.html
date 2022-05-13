@@ -1,0 +1,17 @@
+<input type="file" accept="audio/*" id="upload" />
+<br><br>
+<audio id="audio" controls>
+  <source src="" id="src" />
+</audio>
+
+<script>
+    function handleFiles(event) {
+    var files = event.target.files;
+    document.getElementById('audio').setAttribute("src", URL.createObjectURL(files[0]));
+    document.getElementById("audio").loop = true;
+    document.getElementById("audio").load();
+}
+
+document.getElementById("upload").addEventListener("change", handleFiles);
+
+</script>
